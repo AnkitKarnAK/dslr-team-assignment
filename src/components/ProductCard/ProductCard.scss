@@ -1,5 +1,7 @@
 .card-container {
-  border: 1px solid red;
+  &:hover {
+    box-shadow: 0 2px 16px 4px rgba(40, 44, 63, 0.07);
+  }
 
   .card-image > img {
     width: 100%;
@@ -10,8 +12,8 @@
   .card-body {
     padding-left: 0.5rem;
     padding-top: 0.5rem;
+    padding-bottom: 1rem;
     position: relative;
-    border: 1px solid red;
 
     .card-title {
       font-weight: 700;
