@@ -1,0 +1,48 @@
+.card-container {
+  border: 1px solid red;
+
+  .card-image > img {
+    width: 100%;
+    object-fit: cover;
+    height: 255px;
+    object-position: top;
+  }
+  .card-body {
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    position: relative;
+    border: 1px solid red;
+
+    .card-title {
+      font-weight: 700;
+      line-height: 1.57;
+      text-align: left;
+      color: #282c3f;
+      font-size: 13px;
+      width: 85%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-subtitle {
+      opacity: 0.6;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+      margin: 0;
+      font-size: 11px;
+      font-weight: 400;
+      text-align: left;
+      color: #282c3f;
+      height: 12px;
+    }
+
+    .card-icon {
+      position: absolute;
+      top: 0.5rem;
+      right: 0;
+    }
+  }
+}

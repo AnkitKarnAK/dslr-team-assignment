@@ -1,0 +1,21 @@
+.price-with-discount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+
+  .listing-price {
+    font-weight: 700;
+    color: #282c3f;
+  }
+  .mrp {
+    opacity: 0.4;
+    color: #282c3f;
+    text-decoration: line-through;
+  }
+  .discount {
+    color: #ff905a;
+    font-weight: 700;
+    font-size: 10px;
+  }
+}

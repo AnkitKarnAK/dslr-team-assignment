@@ -164,7 +164,7 @@
   },
   "prettier": {
     "printWidth": 200,
-    "semi": false,
+    "semi": true,
     "trailingComma": "all",
     "tabWidth": 2,
     "htmlWhitespaceSensitivity": "css",
