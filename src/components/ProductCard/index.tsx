@@ -3,17 +3,26 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React from "react";
 import "./ProductCard.scss";
 
-const ProductCard = () => {
+type ProductCardProps = {
+  imgSrc: string;
+  name: string;
+  description: string;
+  listingPrice: number;
+  mrp: number;
+  discount: number;
+};
+
+const ProductCard = ({ imgSrc, name, description, listingPrice, mrp, discount }: ProductCardProps) => {
   return (
     <>
       <div className="card-container">
         <div className="card-image">
-          <img src="https://d2mg89328eg065.cloudfront.net/optimized_media/300/l_1A3198H.webp" />
+          <img src={imgSrc} />
         </div>
         <div className="card-body">
-          <div className="card-title">Mitera</div>
-          <div className="card-subtitle">content text</div>
-          <PriceWithDiscount listingPrice={791} mrp={3299} discount={76} />
+          <div className="card-title">{name}</div>
+          <div className="card-subtitle">{description}</div>
+          <PriceWithDiscount listingPrice={listingPrice} mrp={mrp} discount={discount} />
           <div className="card-icon">
             <FavoriteBorderIcon />
           </div>

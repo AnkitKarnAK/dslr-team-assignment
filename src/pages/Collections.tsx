@@ -9,13 +9,17 @@ const Collections = () => {
     <>
       <Navbar title="Sarees" subTitle={`${collections.length} Items`} />
       <div className="collections">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {collections.map((product) => (
+          <ProductCard
+            key={product.id}
+            imgSrc={product.primaryImage.webpImages.lImage}
+            name={product.name}
+            description={product.description}
+            listingPrice={product.listingPrice}
+            mrp={product.mrp}
+            discount={product.discount}
+          />
+        ))}
       </div>
     </>
   );

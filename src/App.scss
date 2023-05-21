@@ -65,14 +65,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .collections {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
   .collections {
     gap: 1rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -80,6 +80,6 @@ input[type="number"]::-webkit-inner-spin-button {
 @media (min-width: 1024px) {
   .collections {
     gap: 2rem;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
