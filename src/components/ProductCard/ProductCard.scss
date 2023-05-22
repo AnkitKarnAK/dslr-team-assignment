@@ -1,5 +1,6 @@
 .card-container {
   height: 100%;
+  cursor: pointer;
   &:hover {
     box-shadow: 0 2px 16px 4px rgba(40, 44, 63, 0.07);
   }
