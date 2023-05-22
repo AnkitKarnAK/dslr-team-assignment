@@ -1,12 +1,18 @@
 .card-container {
+  height: 100%;
   &:hover {
     box-shadow: 0 2px 16px 4px rgba(40, 44, 63, 0.07);
+  }
+
+  .card-image {
+    height: 75%;
+    overflow: hidden;
   }
 
   .card-image > img {
     width: 100%;
     object-fit: cover;
-    height: 255px;
+    height: 100%;
     object-position: top;
   }
   .card-body {
@@ -21,7 +27,7 @@
       line-height: 1.57;
       text-align: left;
       color: #282c3f;
-      font-size: 13px;
+      font-size: 0.8rem;
       max-width: 85%;
 
       white-space: nowrap;
@@ -36,7 +42,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
 
-      font-size: 11px;
+      font-size: 0.7rem;
       font-weight: 400;
       text-align: left;
       color: #282c3f;

@@ -4,6 +4,7 @@ import { themeOptions } from "theme/mui-theme-styles";
 import "./App.scss";
 import { Route, Routes } from "react-router";
 import Collections from "pages/Collections";
+import Product from "pages/Product";
 
 function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -18,6 +19,7 @@ function App() {
     <ThemeProvider theme={createTheme(themeOptions)}>
       <Routes>
         <Route path="/" element={<Collections />} />
+        <Route path="/products/:productId" element={<Product />} />
       </Routes>
     </ThemeProvider>
   );

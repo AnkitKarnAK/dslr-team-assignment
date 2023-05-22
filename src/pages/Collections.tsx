@@ -9,8 +9,10 @@ import SortBottomDrawer from "components/SortBottomDrawer";
 import FilterModal from "components/FilterModal";
 import { filterCollections, sortCollections } from "utils/utils";
 import { FilterTypes } from "types/index.type";
+import { useNavigate } from "react-router";
 
 const Collections = () => {
+  const navigate = useNavigate();
   const [sortBy, setSortBy] = useState({
     isShown: false,
     value: "",
@@ -63,6 +65,11 @@ const Collections = () => {
   const sortedData = sortCollections(collections, sortBy.value);
   const filteredData = filterCollections(sortedData, filterBy.values);
 
+  const openProductInNewPage = (id: number) => {
+    console.log(`h`);
+    navigate(`/products/${id}`);
+  };
+
   return (
     <>
       <Navbar title="Sarees" subTitle={`${filteredData.length} Items`} />
@@ -76,6 +83,10 @@ const Collections = () => {
             listingPrice={product.listingPrice}
             mrp={product.mrp}
             discount={product.discount}
+            clickHandler={() => {
+              console.log(`first`);
+              openProductInNewPage(product.productId);
+            }}
           />
         ))}
       </div>

@@ -10,12 +10,13 @@ type ProductCardProps = {
   listingPrice: number;
   mrp: number;
   discount: number;
+  clickHandler?: () => void;
 };
 
-const ProductCard = ({ imgSrc, name, description, listingPrice, mrp, discount }: ProductCardProps) => {
+const ProductCard = ({ imgSrc, name, description, listingPrice, mrp, discount, clickHandler }: ProductCardProps) => {
   return (
     <>
-      <div className="card-container">
+      <div className="card-container" onClick={clickHandler}>
         <div className="card-image">
           <img src={imgSrc} />
         </div>
