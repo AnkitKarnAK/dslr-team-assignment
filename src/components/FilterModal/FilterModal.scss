@@ -3,8 +3,11 @@
   text-align: left;
   font-weight: 700;
   height: 3.5rem;
-  font-size: 13px;
+  font-size: 0.9rem;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #eaeaec;
 }
 
