@@ -66,7 +66,6 @@ const Collections = () => {
   const filteredData = filterCollections(sortedData, filterBy.values);
 
   const openProductInNewPage = (id: number) => {
-    console.log(`h`);
     navigate(`/products/${id}`);
   };
 
@@ -84,7 +83,6 @@ const Collections = () => {
             mrp={product.mrp}
             discount={product.discount}
             clickHandler={() => {
-              console.log(`first`);
               openProductInNewPage(product.productId);
             }}
           />
