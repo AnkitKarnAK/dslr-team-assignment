@@ -1,7 +1,7 @@
 import Navbar from "components/Navbar";
 import ProductCard from "components/ProductCard";
 import { collections } from "data/collection";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Collections.scss";
 import SwapVertOutlinedIcon from "@mui/icons-material/SwapVertOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
@@ -19,6 +19,19 @@ const Collections = () => {
     isShown: false,
     value: "",
   });
+
+  const filterData = {
+    supplierName: {
+      type: "supplierName",
+      name: "Supplier",
+      values: getAllValuesForGivenKey(collections, "supplierName") as string[],
+    },
+    sareeFabric: {
+      type: "sareeFabric",
+      name: "Saree Fabric",
+      values: getAllValuesForGivenKey(collections, "sareeFabric") as string[],
+    },
+  };
 
   const toggleSortByDrawer = () => {
     setSortBy((prev) => ({ ...prev, isShown: !prev.isShown }));
@@ -42,18 +55,12 @@ const Collections = () => {
     setFilterBy((prev) => ({ ...prev, isShown: !prev.isShown }));
   };
 
-  const filterData = {
-    supplierName: {
-      type: "supplierName",
-      name: "Supplier",
-      values: getAllValuesForGivenKey(collections, "supplierName") as string[],
-    },
-    sareeFabric: {
-      type: "sareeFabric",
-      name: "Saree Fabric",
-      values: getAllValuesForGivenKey(collections, "sareeFabric") as string[],
-    },
-  };
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [sortBy.value]);
 
   const sortedData = sortArrayByType(collections, sortBy.value);
 
