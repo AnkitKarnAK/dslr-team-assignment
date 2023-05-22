@@ -2,7 +2,9 @@ import Navbar from "components/Navbar";
 import ProductCard from "components/ProductCard";
 import { collections } from "data/collection";
 import React from "react";
-import "../App.scss";
+import "./Collections.scss";
+import SwapVertOutlinedIcon from "@mui/icons-material/SwapVertOutlined";
+import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 
 const Collections = () => {
   return (
@@ -20,6 +22,15 @@ const Collections = () => {
             discount={product.discount}
           />
         ))}
+      </div>
+      <div className="sort-filter-buttons">
+        <div className="sort-filter-button">
+          <SwapVertOutlinedIcon /> Sort
+        </div>
+        <div className="vertical-divider"></div>
+        <div className="sort-filter-button">
+          <TuneOutlinedIcon /> Filter
+        </div>
       </div>
     </>
   );
