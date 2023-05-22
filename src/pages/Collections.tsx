@@ -6,15 +6,39 @@ import "./Collections.scss";
 import SwapVertOutlinedIcon from "@mui/icons-material/SwapVertOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import SortBottomDrawer from "components/SortBottomDrawer";
+import FilterModal from "components/FilterModal";
+import { getAllValuesForGivenKey } from "utils/utils";
 
 const Collections = () => {
   const [sortBy, setSortBy] = useState({
-    isShown: true,
+    isShown: false,
+    value: "",
+  });
+
+  const [filterBy, setFilterBy] = useState({
+    isShown: false,
     value: "",
   });
 
   const toggleSortByDrawer = () => {
     setSortBy((prev) => ({ ...prev, isShown: !prev.isShown }));
+  };
+
+  const toggleFilterByDialog = () => {
+    setFilterBy((prev) => ({ ...prev, isShown: !prev.isShown }));
+  };
+
+  const filterData = {
+    supplierName: {
+      type: "supplierName",
+      name: "Supplier",
+      values: getAllValuesForGivenKey(collections, "supplierName") as string[],
+    },
+    sareeFabric: {
+      type: "sareeFabric",
+      name: "Saree Fabric",
+      values: getAllValuesForGivenKey(collections, "sareeFabric") as string[],
+    },
   };
 
   return (
@@ -38,11 +62,12 @@ const Collections = () => {
           <SwapVertOutlinedIcon /> Sort
         </div>
         <div className="vertical-divider"></div>
-        <div className="sort-filter-button">
+        <div className="sort-filter-button" onClick={toggleFilterByDialog}>
           <TuneOutlinedIcon /> Filter
         </div>
       </div>
       <SortBottomDrawer open={sortBy.isShown} closeDrawer={toggleSortByDrawer} />
+      <FilterModal open={filterBy.isShown} closeDialog={toggleFilterByDialog} filterData={filterData} />
     </>
   );
 };
