@@ -1,5 +1,5 @@
 .filter-title {
-  padding: 14px 12px 10px 20px;
+  padding: 0.8rem 1.2rem;
   text-align: left;
   font-weight: 700;
   height: 3.5rem;
@@ -9,6 +9,13 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #eaeaec;
+
+  span {
+    width: 100%;
+  }
+  span.primary {
+    text-align: right;
+  }
 }
 
 .filters {
@@ -32,7 +39,22 @@
   min-height: 3.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 0.9rem;
+}
+
+.filter-value-selected {
+  font-weight: 700;
+}
+.filter-value-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.filter-type-count,
+.filter-value-count {
+  font-size: 0.7rem;
+  color: #94969f;
 }
 
 .selected-filter-type {

@@ -1,6 +1,6 @@
 import cloneDeep from "lodash/cloneDeep";
 import { RupeeSymbol } from "./constants";
-import { CollectionsType } from "types/index.type";
+import { CollectionsType, FilterTypes } from "types/index.type";
 
 export const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -22,7 +22,7 @@ export const DeepCopy = (item: any) => {
   return cloneDeep(item);
 };
 
-export const getAllValuesForGivenKey = (arr: Record<string, any>[], key: string) => {
+export const getUniqueValuesForGivenKey = (arr: Record<string, any>[], key: string) => {
   const valuesSet = new Set();
 
   arr.forEach((item) => {
@@ -34,7 +34,19 @@ export const getAllValuesForGivenKey = (arr: Record<string, any>[], key: string)
   return Array.from(valuesSet);
 };
 
-export const sortArrayByType = (arr: CollectionsType, sortType: string) => {
+export const getAllValuesForGivenKey = (arr: Record<string, any>[], key: string) => {
+  let valuesSet: unknown[] = [];
+
+  arr.forEach((item) => {
+    if (item[key] !== undefined) {
+      valuesSet = [...valuesSet, item[key]];
+    }
+  });
+
+  return valuesSet;
+};
+
+export const sortCollections = (arr: CollectionsType, sortType: string) => {
   switch (sortType) {
     case "price_low_to_high":
       return arr.sort((a, b) => a.listingPrice - b.listingPrice);
@@ -47,4 +59,21 @@ export const sortArrayByType = (arr: CollectionsType, sortType: string) => {
     default:
       return arr;
   }
+};
+
+export const filterCollections = (products: CollectionsType, filterBy: Record<FilterTypes, string[]>) => {
+  const filteredProducts = products.filter((product) => {
+    const combinedFilterBy = [...filterBy.supplierName, ...filterBy.sareeFabric];
+    if (!combinedFilterBy.length) {
+      return true;
+    }
+
+    if (combinedFilterBy.includes(product.supplierName) || combinedFilterBy.includes(product.sareeFabric)) {
+      return true;
+    }
+
+    return false;
+  });
+
+  return filteredProducts;
 };

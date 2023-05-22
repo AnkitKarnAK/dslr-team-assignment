@@ -7,7 +7,8 @@ import SwapVertOutlinedIcon from "@mui/icons-material/SwapVertOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import SortBottomDrawer from "components/SortBottomDrawer";
 import FilterModal from "components/FilterModal";
-import { getAllValuesForGivenKey, sortArrayByType } from "utils/utils";
+import { filterCollections, sortCollections } from "utils/utils";
+import { FilterTypes } from "types/index.type";
 
 const Collections = () => {
   const [sortBy, setSortBy] = useState({
@@ -17,21 +18,11 @@ const Collections = () => {
 
   const [filterBy, setFilterBy] = useState({
     isShown: false,
-    value: "",
+    values: {
+      supplierName: [] as string[],
+      sareeFabric: [] as string[],
+    },
   });
-
-  const filterData = {
-    supplierName: {
-      type: "supplierName",
-      name: "Supplier",
-      values: getAllValuesForGivenKey(collections, "supplierName") as string[],
-    },
-    sareeFabric: {
-      type: "sareeFabric",
-      name: "Saree Fabric",
-      values: getAllValuesForGivenKey(collections, "sareeFabric") as string[],
-    },
-  };
 
   const toggleSortByDrawer = () => {
     setSortBy((prev) => ({ ...prev, isShown: !prev.isShown }));
@@ -55,6 +46,13 @@ const Collections = () => {
     setFilterBy((prev) => ({ ...prev, isShown: !prev.isShown }));
   };
 
+  const updateFilterBy = (newValues: Record<FilterTypes, string[]>) => {
+    setFilterBy({
+      isShown: false,
+      values: newValues,
+    });
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -62,13 +60,14 @@ const Collections = () => {
     });
   }, [sortBy.value]);
 
-  const sortedData = sortArrayByType(collections, sortBy.value);
+  const sortedData = sortCollections(collections, sortBy.value);
+  const filteredData = filterCollections(sortedData, filterBy.values);
 
   return (
     <>
-      <Navbar title="Sarees" subTitle={`${collections.length} Items`} />
+      <Navbar title="Sarees" subTitle={`${filteredData.length} Items`} />
       <div className="collections">
-        {sortedData.map((product) => (
+        {filteredData.map((product) => (
           <ProductCard
             key={product.id}
             imgSrc={product.primaryImage.webpImages.lImage}
@@ -90,7 +89,7 @@ const Collections = () => {
         </div>
       </div>
       <SortBottomDrawer open={sortBy.isShown} closeDrawer={toggleSortByDrawer} sortedBy={sortBy.value} updateSortedBy={updateSortedBy} />
-      <FilterModal open={filterBy.isShown} closeDialog={toggleFilterByDialog} filterData={filterData} />
+      <FilterModal open={filterBy.isShown} closeDialog={toggleFilterByDialog} filteredBy={filterBy.values} updateFilteredBy={updateFilterBy} />
     </>
   );
 };

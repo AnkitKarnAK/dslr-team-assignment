@@ -33,3 +33,5 @@ export type ProductType = {
 };
 
 export type CollectionsType = ProductType[];
+
+export type FilterTypes = "supplierName" | "sareeFabric";
