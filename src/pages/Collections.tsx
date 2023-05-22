@@ -7,7 +7,7 @@ import SwapVertOutlinedIcon from "@mui/icons-material/SwapVertOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import SortBottomDrawer from "components/SortBottomDrawer";
 import FilterModal from "components/FilterModal";
-import { getAllValuesForGivenKey } from "utils/utils";
+import { getAllValuesForGivenKey, sortArrayByType } from "utils/utils";
 
 const Collections = () => {
   const [sortBy, setSortBy] = useState({
@@ -22,6 +22,20 @@ const Collections = () => {
 
   const toggleSortByDrawer = () => {
     setSortBy((prev) => ({ ...prev, isShown: !prev.isShown }));
+  };
+
+  const updateSortedBy = (type: string) => {
+    if (sortBy.value === type) {
+      setSortBy({
+        ...sortBy,
+        value: "",
+      });
+    } else {
+      setSortBy({
+        isShown: false,
+        value: type,
+      });
+    }
   };
 
   const toggleFilterByDialog = () => {
@@ -41,11 +55,13 @@ const Collections = () => {
     },
   };
 
+  const sortedData = sortArrayByType(collections, sortBy.value);
+
   return (
     <>
       <Navbar title="Sarees" subTitle={`${collections.length} Items`} />
       <div className="collections">
-        {collections.map((product) => (
+        {sortedData.map((product) => (
           <ProductCard
             key={product.id}
             imgSrc={product.primaryImage.webpImages.lImage}
@@ -66,7 +82,7 @@ const Collections = () => {
           <TuneOutlinedIcon /> Filter
         </div>
       </div>
-      <SortBottomDrawer open={sortBy.isShown} closeDrawer={toggleSortByDrawer} />
+      <SortBottomDrawer open={sortBy.isShown} closeDrawer={toggleSortByDrawer} sortedBy={sortBy.value} updateSortedBy={updateSortedBy} />
       <FilterModal open={filterBy.isShown} closeDialog={toggleFilterByDialog} filterData={filterData} />
     </>
   );

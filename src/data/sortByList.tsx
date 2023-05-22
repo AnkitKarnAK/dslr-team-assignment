@@ -1,9 +1,8 @@
-import SortByAlphaOutlinedIcon from "@mui/icons-material/SortByAlphaOutlined";
-
 export const sortByList = [
   {
     id: 1,
     name: "Price: Low to High",
+    type: "price_low_to_high",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" className="sortByIcons">
         <g fill="none" fillRule="evenodd">
@@ -18,7 +17,8 @@ export const sortByList = [
   },
   {
     id: 2,
-    name: "Price: High to Low ",
+    name: "Price: High to Low",
+    type: "price_high_to_low",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" className="sortByIcons">
         <g fill="none" fillRule="evenodd">
@@ -33,31 +33,14 @@ export const sortByList = [
   },
   {
     id: 3,
-    name: "Ratings: High to Low",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="sortByIcons">
-        <path
-          d="M13.7441 7.76569L15.5512 4.25163C15.7206 3.91273 16.2062 3.91728 16.3711 4.25845L18.2794 8.20012L22.6123 8.86767C22.9864 8.92567 23.132 9.38625 22.859 9.64896L19.6975 12.6808L20.406 17.0046C20.4674 17.3776 20.0728 17.6596 19.7385 17.48L16.3074 15.516"
-          stroke="#282C3F"
-          stroke-width="1.13724"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></path>
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M9.98042 5.62951L12.0297 9.8623L16.681 10.5776C17.0518 10.6345 17.1973 11.0939 16.9244 11.3544L13.5331 14.6091L14.2917 19.2502C14.3531 19.6209 13.9619 19.9007 13.6298 19.7233L9.48344 17.5023L5.3041 19.6607C4.96975 19.8325 4.58195 19.547 4.64905 19.1763L5.47923 14.5489L2.13576 11.2429C1.86737 10.9779 2.01976 10.5219 2.39277 10.4696L7.05317 9.82477L9.16615 5.62382C9.3356 5.2872 9.81665 5.29061 9.98042 5.62951Z"
-          stroke="#282C3F"
-          stroke-width="1.13724"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        ></path>
-      </svg>
-    ),
+    name: "Discount",
+    type: "discount_high_to_low",
+    icon: <img width="24" height="24" src="https://img.icons8.com/badges/24/discount.png" alt="discount" />,
   },
   {
     id: 4,
     name: "Name (Ascending)",
-    icon: <SortByAlphaOutlinedIcon className="sortByIcons" />,
+    type: "name_ascending",
+    icon: <img width="24" height="24" src="https://img.icons8.com/ios/24/alphabetical-sorting--v1.png" alt="alphabetical-sorting--v1" />,
   },
 ];

@@ -34,7 +34,7 @@ const FilterModal = ({ open, closeDialog, filterData }: FilterModalProps) => {
       <Dialog fullScreen open={open} onClose={closeDialog} TransitionComponent={Transition}>
         <div className="filter-title">
           <span>FILTERS</span>
-          <span className="color-primary">CLEAR ALL</span>
+          <span className="primary">CLEAR ALL</span>
         </div>
         <div className="filters">
           <div className="filter-types">
@@ -62,7 +62,7 @@ const FilterModal = ({ open, closeDialog, filterData }: FilterModalProps) => {
             CLOSE
           </div>
           <div className="vertical-divider"></div>
-          <div className="filter-button filter-apply">APPLY</div>
+          <div className="filter-button primary">APPLY</div>
         </div>
       </Dialog>
     </div>
